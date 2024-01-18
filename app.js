@@ -1,7 +1,9 @@
     alert("Boas vinda ao jogo do número secreto");
 
+    let maxNumero = 100;
+
     //Gerando número aleatório e convertenho string pra numérico
-    let numeroSecreto = parseInt(Math.random() * 10 + 1);
+    let numeroSecreto = parseInt(Math.random() * maxNumero + 1);
     
     let numeroDigitado;
 
@@ -9,7 +11,7 @@
 
     while (numeroDigitado != numeroSecreto)
     {
-    numeroDigitado = prompt("Escolha um número entre 1 e 30: ");
+    numeroDigitado = prompt(`Escolha um número entre 1 e ${maxNumero}: `);
 
     if(numeroDigitado == numeroSecreto){
         break;
