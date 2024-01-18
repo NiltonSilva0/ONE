@@ -1,18 +1,25 @@
-        // let titulo = document.querySelector("h1");
-        // titulo.innerHTML = "Jogo do número secreto";
-
-        // let paragrafo = document.querySelector("p");
-        // paragrafo.innerHTML = "Escolha um número entre 1 e 10";
-
+        let listaNumeros = [];
+        let tamanhoMaxDaLista = 10;
         let numeroSecreto = numeroAleatorio();
         let tentativas = 1;
         exibirMensagemInicial();
         function exibirTextoNaTela(tag, texto){
             let campo = document.querySelector(tag);
             campo.innerHTML = texto;
+            responsiveVoice.speak(texto, "Brazilian Portuguese Female", {rate: 1.2});
         }
         function numeroAleatorio(){
-            return parseInt(Math.random() * 10 + 1);
+            let numeroEscolhido =  parseInt(Math.random() * tamanhoMaxDaLista + 1);
+            let quantidadeDeElementosNaLista = listaNumeros.length;
+            if(quantidadeDeElementosNaLista == listaNumeros){
+                listaNumeros = [];
+            }
+            if(listaNumeros.includes(numeroEscolhido)){
+                return numeroEscolhido();
+            }else{
+                listaNumeros.push(numeroEscolhido);
+                return numeroEscolhido;
+            }
         }
         function verificarChute(){
             let chute = document.querySelector("input").value;
